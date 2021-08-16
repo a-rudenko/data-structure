@@ -5,10 +5,10 @@ require_once 'BinaryNode.php';
 class BinaryTree
 {
     /**
-     * @param null $root
+     * @param ?BinaryNode $root
      */
     public function __construct(
-        private $root = null
+        private ?BinaryNode $root = null
     )
     {
     }
