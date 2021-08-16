@@ -22,9 +22,9 @@ class LinkedList
     }
 
     /**
-     * @param int $value
+     * @param string $value
      */
-    public function addNode(int $value): void
+    public function addNode(string $value): void
     {
         if ($this->head) {
             $node = new ListNode($value, $this->head);
@@ -35,9 +35,9 @@ class LinkedList
     }
 
     /**
-     * @param int $value
+     * @param string $value
      */
-    public function removeNode(int $value): void
+    public function removeNode(string $value): void
     {
         if ($this->isExists($value)) {
             $this->remove($this->head, $value);
@@ -48,9 +48,9 @@ class LinkedList
 
     /**
      * @param ListNode|null $node
-     * @param int $value
+     * @param string $value
      */
-    private function remove(?ListNode $node, int $value): void
+    private function remove(?ListNode $node, string $value): void
     {
         if ($node->next->value === $value) {
             $node->next = $node->next->next;
@@ -74,10 +74,7 @@ class LinkedList
      */
     private function reverseList(?ListNode $head): ?ListNode
     {
-        if ($head?->next === null) {
-            return $head;
-        }
-
+        if ($head?->next === null) return $head;
         $next = $this->reverseList($head->next);
         $head->next->next = $head;
         $head->next = null;
@@ -86,11 +83,11 @@ class LinkedList
     }
 
     /**
-     * @param int $value
+     * @param string $value
      *
      * @return string
      */
-    public function findNode(int $value): string
+    public function findNode(string $value): string
     {
         if ($this->isExists($value)) {
             return "Node with this value - $value found";
@@ -100,11 +97,11 @@ class LinkedList
     }
 
     /**
-     * @param int $value
+     * @param string $value
      *
      * @return bool
      */
-    private function isExists(int $value): bool
+    private function isExists(string $value): bool
     {
         for ($node = $this->head; $node; $node = $node->next) {
             if ($node->value === $value) {
@@ -116,9 +113,9 @@ class LinkedList
     }
 
     /**
-     * @return int|null
+     * @return string|null
      */
-    public function getHeadValue(): ?int
+    public function getHeadValue(): ?string
     {
         return $this->head?->value;
     }
@@ -134,5 +131,31 @@ class LinkedList
         }
 
         return implode('==>', $result);
+    }
+
+    /**
+     * @return int
+     */
+    public function getCountNodes(): int
+    {
+        return $this->getCount($this->head);
+    }
+
+    /**
+     * @param ListNode|null $node
+     *
+     * @return int
+     */
+    private function getCount(?ListNode $node): int
+    {
+        $count = 0;
+        if ($node === null) return $count;
+
+        while ($node) {
+            $node = $node->next;
+            $count++;
+        }
+
+        return $count;
     }
 }
