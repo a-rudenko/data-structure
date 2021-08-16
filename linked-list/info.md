@@ -17,6 +17,10 @@
 
 `$linkedList->getHeadValue()`
 
+#### Getting count of nodes in a linked list
+
+`$linkedList->getCountNodes()`
+
 #### Finding the node in a linked list
 
 `$linkedList->findNode({{ NODE VALUE }})`
