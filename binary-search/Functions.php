@@ -2,12 +2,12 @@
 
 /**
  * @param array $array
- * @param int $searchValue
+ * @param int|string $searchValue
  * @param int $start
  *
  * @return bool
  */
-function binarySearch(array $array, int $searchValue, int $start = 0): bool
+function binarySearch(array $array, int|string $searchValue, int $start = 0): bool
 {
     $count = count($array);
     if ($count === 0) return false;
@@ -30,20 +30,20 @@ function binarySearch(array $array, int $searchValue, int $start = 0): bool
 
 /**
  * @param array $array
- * @param int $searchValue
+ * @param int|string $searchValue
  * @param int $start
  * @param int|null $end
  *
  * @return bool
  */
-function binarySearchRecursive(array $array, int $searchValue, int $start = 0, ?int $end = null): bool
+function binarySearchRecursive(array $array, int|string $searchValue, int $start = 0, ?int $end = null): bool
 {
     $count = count($array);
     if ($count === 0) return false;
     if ($end === null) $end = $count - 1;
     if ($end < $start) return false;
 
-    $mid = (int)floor(($end + $start) / 2);
+    $mid = floor(($end + $start) / 2);
     if ($array[$mid] === $searchValue) return true;
     if ($array[$mid] > $searchValue) return binarySearchRecursive($array, $searchValue, $start, $mid - 1);
 
@@ -52,13 +52,13 @@ function binarySearchRecursive(array $array, int $searchValue, int $start = 0, ?
 
 /**
  * @param bool $found
- * @param int $value
+ * @param string $value
  */
-function printResult(bool $found, int $value)
+function printResult(bool $found, string $value): void
 {
     if ($found) {
-        echo sprintf('Value - %d was found in the array<br>', $value);
+        echo sprintf('Value - %s was found in the array<br>', $value);
     } else {
-        echo sprintf('Value - %d was not found in the array<br>', $value);
+        echo sprintf('Value - %s was not found in the array<br>', $value);
     }
 }
