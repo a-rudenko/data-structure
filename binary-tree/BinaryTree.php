@@ -16,7 +16,7 @@ class BinaryTree
     /**
      * @param array $values
      */
-    public function createTree(array $values)
+    public function createTree(array $values): void
     {
         foreach ($values as $value) {
             $this->root = $this->add($this->root, $value);
@@ -26,7 +26,7 @@ class BinaryTree
     /**
      * @param int $value
      */
-    public function addNode(int $value)
+    public function addNode(int $value): void
     {
         $this->root = $this->add($this->root, $value);
     }
@@ -34,7 +34,7 @@ class BinaryTree
     /**
      * @param int $value
      */
-    public function removeNode(int $value)
+    public function removeNode(int $value): void
     {
         $this->root = $this->remove($this->root, $value);
     }
@@ -249,7 +249,7 @@ class BinaryTree
     /**
      * @param string $type
      */
-    public function traversal(string $type)
+    public function traversal(string $type): void
     {
         match ($type) {
             'pre-order' => $this->preOrderTraversal(),
@@ -263,7 +263,7 @@ class BinaryTree
     /**
      * In order traversal
      */
-    private function inOrderTraversal()
+    private function inOrderTraversal(): void
     {
         $this->recursionInOrderTraversal($this->root);
     }
@@ -272,7 +272,7 @@ class BinaryTree
      * @param BinaryNode|null $node
      * @param int $count
      */
-    private function recursionInOrderTraversal(?BinaryNode $node, int $count = 0)
+    private function recursionInOrderTraversal(?BinaryNode $node, int $count = 0): void
     {
         if ($node === null) {
             return;
@@ -285,7 +285,7 @@ class BinaryTree
     /**
      * Post order traversal
      */
-    private function postOrderTraversal()
+    private function postOrderTraversal(): void
     {
         $this->recursionPostOrderTraversal($this->root);
     }
@@ -294,7 +294,7 @@ class BinaryTree
      * @param BinaryNode|null $node
      * @param int $count
      */
-    private function recursionPostOrderTraversal(?BinaryNode $node, int $count = 0)
+    private function recursionPostOrderTraversal(?BinaryNode $node, int $count = 0): void
     {
         if ($node === null) {
             return;
@@ -307,7 +307,7 @@ class BinaryTree
     /**
      * Pre order traversal
      */
-    private function preOrderTraversal()
+    private function preOrderTraversal(): void
     {
         $this->recursionPreOrderTraversal($this->root);
     }
@@ -316,7 +316,7 @@ class BinaryTree
      * @param BinaryNode|null $node
      * @param int $count
      */
-    private function recursionPreOrderTraversal(?BinaryNode $node, int $count = 0)
+    private function recursionPreOrderTraversal(?BinaryNode $node, int $count = 0): void
     {
         if ($node === null) {
             return;
